@@ -1,4 +1,9 @@
 import { ProblemsAlarmeSection } from "@/components/sections/alarme/problems-alarme";
+import { FeaturesAlarmeSection } from "@/components/sections/alarme/features-alarme";
+import { BrandsAlarmeSection } from "@/components/sections/alarme/brands-alarme";
+import { ProcessAlarmeSection } from "@/components/sections/alarme/process-alarme";
+import { FaqAlarmeSection } from "@/components/sections/alarme/faq-alarme";
+
 
 export default function AlarmePage() {
   return (
@@ -39,6 +44,15 @@ export default function AlarmePage() {
 
         {/* PROBLÈMES RÉSOLUS PAR L’ALARME */}
         <ProblemsAlarmeSection />
+
+        {/* FONCTIONNALITÉS D’UN SYSTÈME D’ALARME */}
+        <FeaturesAlarmeSection />
+
+        {/* TECHNOLOGIES & MARQUES */}
+        <BrandsAlarmeSection />
+
+        {/* PROCESS D’INSTALLATION */}
+        <ProcessAlarmeSection />
 
         {/* TYPES D’ALARMES */}
         <section>
@@ -82,6 +96,9 @@ export default function AlarmePage() {
             ))}
           </ul>
         </section>
+
+        {/* FAQ ALARME */}
+        <FaqAlarmeSection />
 
         {/* CTA Final */}
         <section className="text-center">
