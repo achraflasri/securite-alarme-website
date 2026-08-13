@@ -1,5 +1,3 @@
-// src/components/sections/alarme/faq-alarme.tsx
-
 type FaqItem = {
   question: string;
   answer: string;
@@ -7,59 +5,68 @@ type FaqItem = {
 
 const FAQ_ITEMS: FaqItem[] = [
   {
-    question: "Est-ce que l’alarme fonctionne en cas de coupure de courant ?",
+    question: "L’alarme fonctionne-t-elle pendant une coupure de courant ?",
     answer:
-      "Oui. La centrale d’alarme est équipée d’une batterie de secours qui prend le relais en cas de coupure. Les détecteurs sans-fil disposent également de leurs propres batteries.",
+      "La plupart des centrales professionnelles prévoient une alimentation de secours. L’autonomie réelle dépend toutefois de la batterie, du nombre d’équipements et de leur consommation ; elle doit être vérifiée pour chaque installation.",
   },
   {
-    question: "Ai-je besoin d’internet pour que l’alarme fonctionne ?",
+    question: "Une connexion internet est-elle indispensable ?",
     answer:
-      "Non, l’alarme peut fonctionner sans connexion internet. En revanche, pour recevoir des notifications sur votre smartphone ou utiliser certaines fonctions à distance, une connexion internet ou GSM/4G est nécessaire.",
+      "La détection locale peut fonctionner sans internet. La consultation à distance et certaines notifications nécessitent en revanche un canal disponible, par exemple internet ou une liaison GSM/4G selon l’équipement.",
   },
   {
-    question: "L’alarme peut-elle déranger le voisinage pour rien ?",
+    question: "Comment limiter les fausses alarmes ?",
     answer:
-      "Lors de l’installation, nous réglons la sensibilité des détecteurs et définissons des scénarios adaptés à votre usage (animaux, passages fréquents, zones à sécuriser uniquement la nuit…). L’objectif est de limiter au maximum les fausses alarmes.",
+      "Le placement des détecteurs, leur technologie et leur réglage sont essentiels. L’audit prend notamment en compte les animaux, les courants d’air, les sources de chaleur et les passages habituels.",
   },
   {
-    question: "Est-ce que vous intervenez uniquement à Casablanca ?",
+    question: "Intervenez-vous en dehors de Casablanca ?",
     answer:
-      "Notre équipe est basée à Casablanca, mais nous pouvons intervenir sur d’autres villes au Maroc en fonction des projets (Rabat, Mohammedia, autres régions sur demande).",
+      "Casablanca est notre zone principale. Les projets situés dans d’autres villes sont étudiés au cas par cas selon leur nature, leur calendrier et les conditions de suivi.",
   },
   {
-    question: "Combien coûte un système d’alarme complet ?",
+    question: "Combien coûte un système d’alarme ?",
     answer:
-      "Le prix dépend de la taille du site, du nombre de détecteurs, du type d’alarme (filaire, sans-fil, hybride) et des options choisies (GSM, application mobile, vidéosurveillance…). Nous proposons un devis détaillé après un premier échange ou une visite sur site.",
+      "Le budget dépend de la surface, des accès, du nombre de zones, de la technologie et des options de transmission. Un échange initial puis, si nécessaire, une visite permettent d’établir un devis cohérent.",
   },
   {
-    question: "Pouvez-vous reprendre une installation d’alarme existante ?",
+    question: "Une installation existante peut-elle être conservée ?",
     answer:
-      "Oui, dans de nombreux cas nous pouvons diagnostiquer et remettre en état une installation existante, ajouter des détecteurs ou moderniser la centrale si nécessaire.",
+      "Un diagnostic permet de contrôler la centrale, les détecteurs, le câblage et les batteries. La réutilisation ou le remplacement des éléments est ensuite proposé selon leur état et leur compatibilité.",
   },
 ];
 
 export function FaqAlarmeSection() {
   return (
-    <section className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-semibold">Questions fréquentes sur les alarmes</h2>
-        <p className="mt-3 max-w-3xl text-slate-300">
-          Voici les réponses aux questions que nos clients nous posent le plus
-          souvent avant d’installer un système d’alarme dans leur maison, leur
-          commerce ou leur entreprise.
+    <section id="faq" aria-labelledby="faq-title">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
+          Questions fréquentes
+        </p>
+        <h2
+          id="faq-title"
+          className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
+        >
+          Bien préparer votre projet d’alarme
+        </h2>
+        <p className="mt-4 leading-7 text-slate-600">
+          Ces réponses donnent un cadre général. Les caractéristiques finales
+          restent celles des équipements retenus dans votre proposition.
         </p>
       </div>
 
-      <dl className="mt-4 space-y-4">
+      <dl className="mt-8 grid gap-4 md:grid-cols-2">
         {FAQ_ITEMS.map((item) => (
           <div
             key={item.question}
-            className="rounded-xl border border-slate-800 bg-slate-900/40 p-5"
+            className="rounded-2xl border border-slate-200 bg-white p-6"
           >
-            <dt className="text-sm font-semibold text-emerald-400">
+            <dt className="font-semibold leading-6 text-slate-950">
               {item.question}
             </dt>
-            <dd className="mt-2 text-sm text-slate-300">{item.answer}</dd>
+            <dd className="mt-3 text-sm leading-6 text-slate-500">
+              {item.answer}
+            </dd>
           </div>
         ))}
       </dl>

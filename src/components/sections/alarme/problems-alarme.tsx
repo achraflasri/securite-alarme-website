@@ -1,66 +1,72 @@
-// src/components/sections/alarme/problems-alarme.tsx
-
 const PROBLEMS = [
   {
-    title: "Risque de cambriolage",
+    title: "Risque d’intrusion",
     description:
-      "Portes forcées, fenêtres fracturées, intrusion en quelques minutes lorsque le logement ou le local est vide.",
+      "Une porte forcée ou une fenêtre fracturée peut suffire lorsqu’un logement ou un local reste sans surveillance.",
   },
   {
     title: "Locaux vides la nuit",
     description:
-      "Magasins, bureaux, entrepôts ou agences bancaires laissés sans présence humaine plusieurs heures par jour.",
+      "Magasins, bureaux, entrepôts et agences peuvent rester plusieurs heures sans présence humaine.",
   },
   {
-    title: "Présence de biens de valeur",
+    title: "Biens et données sensibles",
     description:
-      "Stock marchandises, matériel informatique, coffres, produits sensibles… une cible idéale sans protection.",
+      "Stocks, matériel informatique, documents et équipements professionnels nécessitent une protection adaptée.",
   },
   {
-    title: "Zones difficiles à surveiller",
+    title: "Accès difficiles à surveiller",
     description:
-      "Parkings, arrières de bâtiments, accès de service, toits ou murs mitoyens utilisés pour pénétrer discrètement.",
+      "Parkings, accès de service, terrasses et zones périphériques demandent une stratégie de détection cohérente.",
   },
   {
-    title: "Absence ou déplacements fréquents",
+    title: "Absences fréquentes",
     description:
-      "Voyages, résidences secondaires, fermeture annuelle… le site reste vulnérable si aucune alarme n’est en place.",
+      "Déplacements, fermetures et résidences inoccupées augmentent le besoin de détection et d’alerte à distance.",
   },
   {
     title: "Réaction trop tardive",
     description:
-      "Sans détection ni sirène, l’intrusion est souvent découverte plusieurs heures après, quand les dégâts sont déjà faits.",
+      "Une alerte configurée selon le site aide à identifier plus tôt un événement et à appliquer la procédure prévue.",
   },
 ];
 
 export function ProblemsAlarmeSection() {
   return (
-    <section className="space-y-4">
-      <div>
-        <h2 className="text-3xl font-semibold">
+    <section id="risques" aria-labelledby="risques-title">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
+          Anticiper les risques
+        </p>
+        <h2
+          id="risques-title"
+          className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
+        >
           Quels problèmes une alarme résout-elle ?
         </h2>
-        <p className="mt-3 text-slate-300 max-w-3xl">
-          Un système d’alarme anti-intrusion ne se limite pas à faire du bruit :
-          il permet de détecter rapidement une tentative d’accès, de dissuader
-          l’intrus et de vous alerter instantanément, où que vous soyez.
+        <p className="mt-4 leading-7 text-slate-600">
+          Un système anti-intrusion associe détection, dissuasion et transmission
+          d’alertes. Son efficacité dépend surtout d’une étude sérieuse des accès,
+          des usages et des zones sensibles.
         </p>
       </div>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
-        {PROBLEMS.map((problem) => (
-          <div
+      <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {PROBLEMS.map((problem, index) => (
+          <article
             key={problem.title}
-            className="relative overflow-hidden rounded-xl border border-slate-800 bg-slate-900/40 p-5"
+            className="group rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-blue-200 hover:bg-blue-50"
           >
-            <div className="mb-2 text-xs font-semibold uppercase text-emerald-400">
-              Problème fréquent
-            </div>
-            <h3 className="text-lg font-semibold">{problem.title}</h3>
-            <p className="mt-2 text-sm text-slate-300">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-50 text-sm font-semibold text-blue-600">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 className="mt-5 text-lg font-semibold text-slate-950">
+              {problem.title}
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-slate-500">
               {problem.description}
             </p>
-          </div>
+          </article>
         ))}
       </div>
     </section>

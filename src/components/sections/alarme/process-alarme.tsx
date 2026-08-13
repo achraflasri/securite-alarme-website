@@ -1,6 +1,5 @@
-// src/components/sections/alarme/process-alarme.tsx
-
 type Step = {
+  number: string;
   title: string;
   subtitle: string;
   description: string;
@@ -8,73 +7,86 @@ type Step = {
 
 const STEPS: Step[] = [
   {
-    title: "1. Audit & visite sur site",
-    subtitle: "Comprendre vos risques et vos contraintes",
+    number: "01",
+    title: "Audit et visite sur site",
+    subtitle: "Comprendre les risques et les contraintes",
     description:
-      "Nous analysons les accès, les zones sensibles, l’environnement et vos habitudes d’utilisation (horaires, personnels, zones ouvertes au public…).",
+      "Analyse des accès, des zones sensibles, de l’environnement et des habitudes d’utilisation du site.",
   },
   {
-    title: "2. Proposition de solution",
-    subtitle: "Un système d’alarme adapté à votre site",
+    number: "02",
+    title: "Proposition de solution",
+    subtitle: "Définir un système adapté",
     description:
-      "Nous définissons le type d’alarme (filaire, sans-fil, hybride), le nombre de détecteurs, de sirènes et les éventuelles intégrations vidéosurveillance.",
+      "Choix de l’architecture, des zones de détection, des moyens d’alerte et des intégrations pertinentes.",
   },
   {
-    title: "3. Installation & câblage",
-    subtitle: "Travaux propres, avec le moins de gêne possible",
+    number: "03",
+    title: "Installation et configuration",
+    subtitle: "Mettre en place les équipements",
     description:
-      "Nos techniciens installent les équipements, réalisent le câblage si nécessaire et configurent la centrale ainsi que les différents capteurs.",
+      "Pose, câblage lorsque nécessaire, programmation de la centrale et configuration des différents capteurs.",
   },
   {
-    title: "4. Tests & scénarios",
-    subtitle: "Vérification de chaque zone et chaque capteur",
+    number: "04",
+    title: "Tests et scénarios",
+    subtitle: "Vérifier chaque zone",
     description:
-      "Nous testons les déclenchements, les sirènes, les notifications, les modes Nuit/Absence, et ajustons les paramètres selon vos attentes.",
+      "Contrôle des déclenchements, des alertes, des modes d’armement et ajustement des paramètres convenus.",
   },
   {
-    title: "5. Formation des utilisateurs",
-    subtitle: "Utilisation simple au quotidien",
+    number: "05",
+    title: "Prise en main",
+    subtitle: "Rendre l’utilisation simple",
     description:
-      "Nous expliquons à vos équipes ou à votre famille comment armer/désarmer, gérer les codes utilisateurs, l’application mobile et les procédures en cas d’alarme.",
+      "Présentation des commandes, des codes utilisateurs et des procédures à suivre en cas d’événement.",
   },
   {
-    title: "6. Maintenance & suivi",
-    subtitle: "Contrôles réguliers et assistance",
+    number: "06",
+    title: "Maintenance et suivi",
+    subtitle: "Préserver la fiabilité",
     description:
-      "Nous proposons des contrats de maintenance pour vérifier le bon fonctionnement de l’installation, des batteries et des équipements de sécurité.",
+      "Un programme de contrôle peut être défini selon les équipements, les contraintes du site et le niveau de suivi souhaité.",
   },
 ];
 
 export function ProcessAlarmeSection() {
   return (
-    <section className="space-y-6">
-      <div>
-        <h2 className="text-3xl font-semibold">
+    <section id="installation" aria-labelledby="installation-title">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
+          De l’étude au suivi
+        </p>
+        <h2
+          id="installation-title"
+          className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
+        >
           Comment se déroule une installation d’alarme ?
         </h2>
-        <p className="mt-3 max-w-3xl text-slate-300">
-          De l’audit initial jusqu’à la maintenance, nous vous accompagnons à
-          chaque étape pour garantir un système d’alarme efficace, fiable et
-          facile à utiliser au quotidien.
+        <p className="mt-4 leading-7 text-slate-600">
+          Une méthode claire réduit les angles morts, simplifie l’utilisation et
+          facilite la maintenance future.
         </p>
       </div>
 
-      <ol className="mt-4 space-y-4">
+      <ol className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {STEPS.map((step) => (
           <li
-            key={step.title}
-            className="relative flex gap-4 rounded-xl border border-slate-800 bg-slate-900/40 p-5"
+            key={step.number}
+            className="relative rounded-2xl border border-slate-200 bg-white p-6"
           >
-            <div className="mt-1 h-8 w-8 flex-shrink-0 rounded-full border border-emerald-500/60 bg-emerald-500/10 text-center text-sm font-semibold leading-8 text-emerald-300">
-              {step.title.split(".")[0]}
-            </div>
-            <div>
-              <h3 className="text-base font-semibold">{step.title}</h3>
-              <p className="text-sm text-emerald-300">{step.subtitle}</p>
-              <p className="mt-2 text-sm text-slate-300">
-                {step.description}
-              </p>
-            </div>
+            <span className="text-sm font-bold tracking-[0.16em] text-blue-600">
+              {step.number}
+            </span>
+            <h3 className="mt-4 text-lg font-semibold text-slate-950">
+              {step.title}
+            </h3>
+            <p className="mt-1 text-sm font-medium text-blue-700">
+              {step.subtitle}
+            </p>
+            <p className="mt-3 text-sm leading-6 text-slate-500">
+              {step.description}
+            </p>
           </li>
         ))}
       </ol>

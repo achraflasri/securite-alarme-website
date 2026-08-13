@@ -1,74 +1,88 @@
-// src/components/sections/alarme/features-alarme.tsx
+import { Icon } from "@/components/ui/icon";
 
 const FEATURES = [
   {
-    title: "Détection de mouvement (PIR)",
+    title: "Détection de mouvement",
     description:
-      "Capteurs infrarouges capables de détecter une présence humaine dans la pièce, même sans lumière.",
+      "Des détecteurs adaptés aux volumes et aux usages identifient une présence dans les zones protégées.",
   },
   {
     title: "Détection d’ouverture",
     description:
-      "Capteurs sur portes et fenêtres pour signaler toute ouverture non autorisée, même sans mouvement.",
+      "Les portes, fenêtres et accès sensibles peuvent être surveillés dès leur ouverture.",
   },
   {
-    title: "Sirène puissante 110–120 dB",
+    title: "Alerte sonore",
     description:
-      "Dissuade immédiatement les intrus et alerte le voisinage en cas d'effraction.",
+      "Une sirène compatible avec le site participe à la dissuasion et signale le déclenchement sur place.",
   },
   {
-    title: "Notifications en temps réel",
+    title: "Alertes à distance",
     description:
-      "Alertes instantanées sur votre smartphone : intrusion, panne, batterie faible, armement/désarmement…",
+      "Selon la solution et la connectivité disponibles, des événements peuvent être transmis aux utilisateurs autorisés.",
   },
   {
-    title: "Mode Nuit / Mode Absence",
+    title: "Modes nuit et absence",
     description:
-      "Sécurisez uniquement certaines zones pendant que vous dormez, ou toute la maison lorsque vous êtes absent.",
+      "Les scénarios d’armement peuvent protéger tout le site ou seulement certaines zones selon les horaires.",
   },
   {
-    title: "Backup batterie",
+    title: "Alimentation de secours",
     description:
-      "Fonctionne même en cas de coupure de courant grâce à une batterie de secours intégrée.",
+      "Une batterie peut maintenir les fonctions essentielles pendant une coupure, avec une autonomie variable selon l’équipement.",
   },
   {
-    title: "Alarme GSM / 4G",
+    title: "Communication GSM / 4G",
     description:
-      "Continue de vous alerter même si le Wi-Fi tombe : SMS, appels ou notifications via réseau mobile.",
+      "Une liaison mobile peut compléter la connexion principale selon le matériel, la couverture réseau et la configuration retenue.",
   },
   {
-    title: "Journal des événements",
+    title: "Historique des événements",
     description:
-      "Historique complet : qui a armé, désarmé, à quelle heure et quel capteur a été déclenché.",
+      "Les solutions compatibles enregistrent les armements, désarmements et déclenchements pour faciliter le suivi.",
   },
   {
-    title: "Intégration vidéosurveillance",
+    title: "Intégration vidéo",
     description:
-      "Possibilité d’associer chaque alarme à une caméra pour voir immédiatement ce qui se passe.",
+      "Alarme et vidéosurveillance peuvent être coordonnées lorsque les équipements et le besoin du projet le permettent.",
   },
 ];
 
 export function FeaturesAlarmeSection() {
   return (
-    <section className="space-y-4">
-      <div>
-        <h2 className="text-3xl font-semibold">Fonctionnalités d’un système d’alarme</h2>
-        <p className="mt-3 max-w-3xl text-slate-300">
-          Une alarme moderne combine plusieurs technologies pour détecter, 
-          dissuader, alerter et enregistrer toute tentative d’intrusion, 
-          que ce soit dans une maison, un commerce ou une entreprise.
+    <section id="fonctionnalites" aria-labelledby="fonctionnalites-title">
+      <div className="max-w-3xl">
+        <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
+          Une protection cohérente
+        </p>
+        <h2
+          id="fonctionnalites-title"
+          className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
+        >
+          Les fonctions essentielles d’un système d’alarme
+        </h2>
+        <p className="mt-4 leading-7 text-slate-600">
+          Chaque fonction est sélectionnée et configurée selon le niveau de
+          risque, le bâtiment et les habitudes des utilisateurs.
         </p>
       </div>
 
-      <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {FEATURES.map((f) => (
-          <div
-            key={f.title}
-            className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900/60"
+      <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {FEATURES.map((feature) => (
+          <article
+            key={feature.title}
+            className="rounded-2xl border border-slate-200 bg-white p-6"
           >
-            <h3 className="text-lg font-semibold">{f.title}</h3>
-            <p className="mt-2 text-sm text-slate-300">{f.description}</p>
-          </div>
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-blue-200 bg-blue-50 text-blue-600">
+              <Icon name="check" className="h-5 w-5" />
+            </span>
+            <h3 className="mt-5 text-lg font-semibold text-slate-950">
+              {feature.title}
+            </h3>
+            <p className="mt-2 text-sm leading-6 text-slate-500">
+              {feature.description}
+            </p>
+          </article>
         ))}
       </div>
     </section>
