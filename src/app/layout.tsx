@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
@@ -15,8 +15,31 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Systèmes d’alarme & vidéosurveillance à Casablanca",
-  description: "Installation professionnelle d’alarmes anti-intrusion et de caméras de surveillance à Casablanca et partout au Maroc. Plus de 20 ans d’expérience au service des entreprises, banques, commerces et maisons.",
+  title: {
+    default: "IVI SYSTEM | Alarmes & vidéosurveillance à Casablanca",
+    template: "%s | IVI SYSTEM",
+  },
+  description:
+    "Installation et maintenance de systèmes d’alarme anti-intrusion et de vidéosurveillance à Casablanca pour entreprises, commerces et particuliers.",
+  keywords: [
+    "alarme Casablanca",
+    "installation alarme Casablanca",
+    "vidéosurveillance Casablanca",
+    "sécurité électronique Maroc",
+  ],
+  openGraph: {
+    type: "website",
+    locale: "fr_MA",
+    siteName: "IVI SYSTEM",
+    title: "IVI SYSTEM | Alarmes & vidéosurveillance à Casablanca",
+    description:
+      "Solutions de sécurité électronique pour les professionnels et les particuliers à Casablanca.",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -27,7 +50,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-slate-950 text-slate-50 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-white font-sans text-slate-950 antialiased`}
       >
         <div className="flex min-h-screen flex-col">
           <Header />
