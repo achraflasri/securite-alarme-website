@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Vidéosurveillance professionnelle à Casablanca",
+  title: "Vidéosurveillance professionnelle au Maroc",
   description:
-    "Installation de caméras IP et de systèmes d’enregistrement pour commerces, entreprises et particuliers à Casablanca.",
+    "IVI SYSTEME installe des caméras IP et systèmes d’enregistrement pour commerces, entreprises et particuliers partout au Maroc.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function VideoSurveillancePage() {

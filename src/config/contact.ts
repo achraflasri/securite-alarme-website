@@ -3,7 +3,8 @@ export const CONTACT = {
   phoneHref: "tel:+212661425750",
   whatsappNumber: "212661425750",
   whatsappHref: "https://wa.me/212661425750",
-  email: "saidlasriusg@gmail.com",
-  emailHref: "mailto:saidlasriusg@gmail.com",
-  city: "Casablanca, Maroc",
+  email: "said.lasri.securite@gmail.com",
+  emailHref: "mailto:said.lasri.securite@gmail.com",
+  baseLocation: "",
+  serviceArea: "Interventions dans tout le Maroc",
 } as const;

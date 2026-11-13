@@ -3,11 +3,16 @@ import Link from "next/link";
 import { QuoteForm } from "@/components/forms/quote-form";
 import { Icon } from "@/components/ui/icon";
 import { CONTACT } from "@/config/contact";
+import { SITE } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Contact et demande de devis",
   description:
-    "Demandez un devis pour votre projet d’alarme, de vidéosurveillance, de contrôle d’accès ou de maintenance à Casablanca.",
+    "Demandez un devis pour votre projet de sécurité électronique partout au Maroc : alarme, vidéosurveillance, incendie, réseau informatique ou maintenance.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 const PROJECT_DETAILS = [
@@ -58,8 +63,12 @@ export default function ContactPage() {
                 <Icon name="building" className="h-6 w-6" />
               </span>
               <h2 className="mt-6 text-2xl font-semibold text-slate-950">
-                Contact direct
+                {SITE.contactPerson}, votre interlocuteur
               </h2>
+              <p className="mt-3 text-sm leading-6 text-slate-600">
+                Échangez directement avec la personne qui étudiera votre besoin
+                et vous accompagnera dans les prochaines étapes.
+              </p>
               <address className="mt-6 space-y-5 not-italic">
                 <div>
                   <p className="text-sm text-slate-500">Téléphone</p>
@@ -91,9 +100,14 @@ export default function ContactPage() {
                   </a>
                 </div>
                 <div>
-                  <p className="text-sm text-slate-500">Zone principale</p>
-                  <p className="mt-1 font-medium text-slate-700">
-                    {CONTACT.city}
+                  <p className="text-sm text-slate-500">Zone d’intervention</p>
+                  {CONTACT.baseLocation ? (
+                    <p className="mt-1 font-medium text-slate-700">
+                      {CONTACT.baseLocation}
+                    </p>
+                  ) : null}
+                  <p className="mt-1 text-sm text-slate-600">
+                    {CONTACT.serviceArea}
                   </p>
                 </div>
               </address>

@@ -20,9 +20,9 @@ const FAQ_ITEMS: FaqItem[] = [
       "Le placement des détecteurs, leur technologie et leur réglage sont essentiels. L’audit prend notamment en compte les animaux, les courants d’air, les sources de chaleur et les passages habituels.",
   },
   {
-    question: "Intervenez-vous en dehors de Casablanca ?",
+    question: "Intervenez-vous partout au Maroc ?",
     answer:
-      "Casablanca est notre zone principale. Les projets situés dans d’autres villes sont étudiés au cas par cas selon leur nature, leur calendrier et les conditions de suivi.",
+      "Oui. Nous intervenons partout au Maroc. L’organisation est définie selon la ville, la nature du projet, son calendrier et les conditions de suivi.",
   },
   {
     question: "Combien coûte un système d’alarme ?",

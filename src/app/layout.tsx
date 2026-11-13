@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
+import { PERSON } from "@/config/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,25 +16,41 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(PERSON.siteUrl),
   title: {
-    default: "IVI SYSTEM | Alarmes & vidéosurveillance à Casablanca",
-    template: "%s | IVI SYSTEM",
+    default: "Said Lasri | Installation d’alarmes et caméras au Maroc",
+    template: "%s | Said Lasri",
   },
   description:
-    "Installation et maintenance de systèmes d’alarme anti-intrusion et de vidéosurveillance à Casablanca pour entreprises, commerces et particuliers.",
+    "Said Lasri, expert avec plus de 30 ans d’expérience : installation d’alarmes, caméras de surveillance, contrôle d’accès, incendie et réseaux au Maroc.",
   keywords: [
-    "alarme Casablanca",
-    "installation alarme Casablanca",
-    "vidéosurveillance Casablanca",
+    "Said Lasri",
+    "alarme Maroc",
+    "installation alarme Maroc",
+    "caméra de surveillance Maroc",
+    "installation caméra de surveillance Maroc",
+    "vidéosurveillance Maroc",
     "sécurité électronique Maroc",
+    "détection incendie Maroc",
+    "installation réseau informatique Maroc",
   ],
+  authors: [{ name: PERSON.name }],
+  creator: PERSON.name,
+  alternates: {
+    canonical: PERSON.siteUrl,
+  },
   openGraph: {
     type: "website",
     locale: "fr_MA",
-    siteName: "IVI SYSTEM",
-    title: "IVI SYSTEM | Alarmes & vidéosurveillance à Casablanca",
+    url: PERSON.siteUrl,
+    siteName: PERSON.name,
+    title: "Said Lasri | Alarmes et caméras de surveillance au Maroc",
     description:
-      "Solutions de sécurité électronique pour les professionnels et les particuliers à Casablanca.",
+      "Plus de 30 ans d’expérience en installation et maintenance de systèmes de sécurité électronique au Maroc.",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
