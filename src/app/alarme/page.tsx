@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ProblemsAlarmeSection } from "@/components/sections/alarme/problems-alarme";
 import { FeaturesAlarmeSection } from "@/components/sections/alarme/features-alarme";
@@ -10,21 +11,27 @@ import {
   AudienceAlarmeSection,
 } from "@/components/sections/alarme/solutions-alarme";
 import { Icon } from "@/components/ui/icon";
+import { SITE } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Installation d’alarme anti-intrusion à Casablanca",
+  title: "Installation d’alarme anti-intrusion au Maroc",
   description:
-    "Étude, installation et maintenance de systèmes d’alarme anti-intrusion pour maisons, commerces et entreprises à Casablanca.",
+    "IVI SYSTEME étudie, installe et maintient des systèmes d’alarme pour maisons, commerces et entreprises partout au Maroc.",
   keywords: [
-    "installation alarme Casablanca",
-    "alarme anti-intrusion Casablanca",
-    "alarme maison Casablanca",
-    "alarme entreprise Casablanca",
+    "installation alarme Maroc",
+    "alarme anti-intrusion Maroc",
+    "alarme maison Maroc",
+    "alarme entreprise Maroc",
+    "installation alarme Maroc",
   ],
   openGraph: {
-    title: "Installation d’alarme anti-intrusion à Casablanca",
+    title: "Installation d’alarme anti-intrusion au Maroc",
     description:
       "Des systèmes d’alarme étudiés selon votre bâtiment, vos usages et vos risques.",
+  },
+  robots: {
+    index: false,
+    follow: false,
   },
 };
 
@@ -34,14 +41,18 @@ const SERVICE_JSON_LD = {
   name: "Installation de systèmes d’alarme anti-intrusion",
   serviceType: "Installation et maintenance de systèmes d’alarme",
   description:
-    "Étude et installation de systèmes d’alarme pour les professionnels et les particuliers à Casablanca.",
+    "Étude et installation de systèmes d’alarme pour les professionnels et les particuliers partout au Maroc.",
   areaServed: {
-    "@type": "City",
-    name: "Casablanca",
+    "@type": "Country",
+    name: "Maroc",
   },
   provider: {
     "@type": "Organization",
-    name: "IVI SYSTEM",
+    name: SITE.name,
+    employee: {
+      "@type": "Person",
+      name: SITE.contactPerson,
+    },
   },
   audience: {
     "@type": "Audience",
@@ -54,6 +65,35 @@ const HERO_POINTS = [
   "Scénarios définis selon vos usages",
   "Prise en main et suivi de l’installation",
 ];
+
+const ALARM_ILLUSTRATIONS = [
+  {
+    filename: "detecteur-mouvement-illustre.jpg",
+    alt: "Détecteur de mouvement infrarouge passif sur fond sombre",
+    title: "Détection de mouvement",
+    description:
+      "Un détecteur PIR surveille les zones définies lors de l’étude technique du site.",
+    credit: "Raimond Spekking / Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Busch-Jaeger_Elektro_UP_Sensor_180_Komfort_6132-0527.jpg",
+    license: "CC BY-SA 4.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/4.0/",
+  },
+  {
+    filename: "sirene-exterieure-illustree.jpg",
+    alt: "Sirène d’alarme extérieure installée en hauteur sur une maison",
+    title: "Alerte extérieure",
+    description:
+      "La sirène extérieure participe à la dissuasion et signale le déclenchement de l’alarme.",
+    credit: "Harrihealey02 / Wikimedia Commons",
+    sourceUrl:
+      "https://commons.wikimedia.org/wiki/File:Home_Intruder_Alarm_system.JPG",
+    license: "CC BY-SA 3.0",
+    licenseUrl: "https://creativecommons.org/licenses/by-sa/3.0/",
+  },
+];
+
+const ASSET_PREFIX = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export default function AlarmePage() {
   return (
@@ -85,15 +125,19 @@ export default function AlarmePage() {
             </nav>
 
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
-              Casablanca · Plus de 20 ans d’expérience
+              Partout au Maroc · Plus de 30 ans d’expérience
             </p>
             <h1 className="mt-4 max-w-4xl text-4xl font-bold leading-[1.08] tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              Installation de systèmes d’alarme anti-intrusion à Casablanca
+              Installation de systèmes d’alarme anti-intrusion au Maroc
             </h1>
             <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
               Protégez votre maison, votre commerce ou votre entreprise avec une
               solution étudiée selon vos accès, vos usages et le niveau de
               sécurité recherché.
+            </p>
+
+            <p className="mt-4 text-sm font-medium text-slate-700">
+              Votre interlocuteur direct : {SITE.contactPerson}
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -142,6 +186,78 @@ export default function AlarmePage() {
       <div className="mx-auto max-w-7xl space-y-24 px-4 py-20 sm:px-6 sm:py-24 lg:space-y-32 lg:px-8 lg:py-32">
         <ProblemsAlarmeSection />
         <AlarmSolutionsSection />
+
+        <section aria-labelledby="equipements-alarme">
+          <div className="max-w-3xl">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
+              Équipements en situation
+            </p>
+            <h2
+              id="equipements-alarme"
+              className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl"
+            >
+              Les éléments visibles d’un système d’alarme
+            </h2>
+            <p className="mt-4 leading-7 text-slate-600">
+              Le matériel exact dépend du bâtiment et de l’étude. Ces images
+              illustrent trois fonctions courantes d’une installation
+              anti-intrusion.
+            </p>
+          </div>
+
+          <div className="mt-10 grid gap-5 md:grid-cols-2">
+            {ALARM_ILLUSTRATIONS.map((item) => (
+              <article
+                key={item.filename}
+                className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-slate-100">
+                  <Image
+                    src={`${ASSET_PREFIX}/images/alarme/${item.filename}`}
+                    alt={item.alt}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover transition duration-500 hover:scale-[1.03]"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold text-slate-950">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-6 text-slate-600">
+                    {item.description}
+                  </p>
+                  <p className="mt-5 text-xs leading-5 text-slate-500">
+                    Photo :{" "}
+                    <a
+                      href={item.sourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-slate-300 underline-offset-2 transition hover:text-blue-600"
+                    >
+                      {item.credit}
+                    </a>{" "}
+                    ·{" "}
+                    <a
+                      href={item.licenseUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="underline decoration-slate-300 underline-offset-2 transition hover:text-blue-600"
+                    >
+                      {item.license}
+                    </a>
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-5 text-xs leading-5 text-slate-500">
+            Images d’illustration : elles ne présentent pas des réalisations
+            d’IVI SYSTEME ni un engagement sur une marque ou un modèle précis.
+          </p>
+        </section>
+
         <FeaturesAlarmeSection />
         <TechnologiesAlarmeSection />
         <ProcessAlarmeSection />
@@ -158,7 +274,7 @@ export default function AlarmePage() {
               Étudions votre besoin
             </p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-              Besoin d’un système d’alarme à Casablanca ?
+              Besoin d’un système d’alarme au Maroc ?
             </h2>
             <p className="mt-4 leading-7 text-slate-600">
               Décrivez votre bâtiment, vos contraintes et les zones à protéger.

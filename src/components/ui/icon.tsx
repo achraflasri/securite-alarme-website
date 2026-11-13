@@ -5,9 +5,11 @@ export type IconName =
   | "camera"
   | "check"
   | "close"
+  | "fire"
   | "home"
   | "key"
   | "menu"
+  | "network"
   | "shield"
   | "store"
   | "tools"
@@ -67,6 +69,13 @@ export function Icon({ name, className = "h-5 w-5" }: IconProps) {
           <path d="m6 6 12 12M18 6 6 18" />
         </svg>
       );
+    case "fire":
+      return (
+        <svg {...commonProps}>
+          <path d="M12 22c4 0 7-2.8 7-6.7 0-3.1-1.8-5.5-4.5-8.3.1 2.1-.8 3.4-1.7 4.2.2-3.8-2.2-7-5.4-9.2.2 3.5-2.4 5.6-2.4 9.5C5 19.2 8 22 12 22Z" />
+          <path d="M9.5 17.2c0 1.7 1.1 2.8 2.5 2.8s2.5-1.1 2.5-2.8c0-1.3-.8-2.4-2.1-3.7 0 1-.4 1.6-1 2-.1-1.5-.9-2.7-2-3.5.1 2.2-1.4 3.3-1.4 5.2Z" />
+        </svg>
+      );
     case "home":
       return (
         <svg {...commonProps}>
@@ -84,6 +93,15 @@ export function Icon({ name, className = "h-5 w-5" }: IconProps) {
       return (
         <svg {...commonProps}>
           <path d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+      );
+    case "network":
+      return (
+        <svg {...commonProps}>
+          <rect x="9" y="3" width="6" height="5" rx="1" />
+          <rect x="3" y="16" width="6" height="5" rx="1" />
+          <rect x="15" y="16" width="6" height="5" rx="1" />
+          <path d="M12 8v4M6 16v-4h12v4" />
         </svg>
       );
     case "shield":

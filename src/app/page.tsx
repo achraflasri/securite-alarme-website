@@ -1,5 +1,8 @@
 import Link from "next/link";
 import { Icon, type IconName } from "@/components/ui/icon";
+import { CONTACT } from "@/config/contact";
+import { SITE } from "@/config/site";
+import { PersonalHomePage } from "@/components/personal-home";
 
 type Service = {
   title: string;
@@ -31,6 +34,20 @@ const SERVICES: Service[] = [
       "Organisation des accès et des droits pour mieux maîtriser les zones sensibles.",
     href: "/contact",
     icon: "key",
+  },
+  {
+    title: "Systèmes de détection incendie",
+    description:
+      "Solutions adressables ou conventionnelles étudiées selon la configuration et les besoins du site.",
+    href: "/contact",
+    icon: "fire",
+  },
+  {
+    title: "Réseaux informatiques",
+    description:
+      "Câblage réseau, prises RJ45, baies et organisation des connexions pour une infrastructure fiable.",
+    href: "/contact",
+    icon: "network",
   },
   {
     title: "Diagnostic et maintenance",
@@ -138,7 +155,7 @@ const HOME_FAQ = [
   {
     question: "Quelle est votre zone d’intervention ?",
     answer:
-      "Casablanca est la zone principale. Les autres demandes sont étudiées au cas par cas selon le projet et les conditions de suivi.",
+      "Nous intervenons partout au Maroc selon la nature, le calendrier et les conditions de suivi du projet.",
   },
 ];
 
@@ -157,9 +174,38 @@ const HERO_STEPS = [
   },
 ];
 
+const ORGANIZATION_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: SITE.name,
+  description:
+    "IVI SYSTEME installe des systèmes de sécurité électronique partout au Maroc pour les particuliers et les professionnels.",
+  telephone: CONTACT.phoneDisplay,
+  email: CONTACT.email,
+  areaServed: {
+    "@type": "Country",
+    name: "Maroc",
+  },
+  employee: {
+    "@type": "Person",
+    name: SITE.contactPerson,
+    jobTitle: "Interlocuteur sécurité électronique",
+  },
+};
+
 export default function HomePage() {
+  if (process.env.NEXT_PUBLIC_SITE_MODE !== "ivi") {
+    return <PersonalHomePage />;
+  }
+
   return (
     <main className="overflow-hidden bg-white text-slate-950">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(ORGANIZATION_JSON_LD).replace(/</g, "\\u003c"),
+        }}
+      />
       <section className="relative isolate border-b border-slate-200">
         <div
           className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_15%_20%,rgba(37,99,235,0.18),transparent_32%),radial-gradient(circle_at_85%_20%,rgba(96,165,250,0.10),transparent_28%)]"
@@ -173,15 +219,20 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-7xl gap-14 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-[1.15fr_0.85fr] lg:items-center lg:px-8 lg:py-28">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
-              Sécurité électronique · Casablanca
+              Intervention dans tout le Maroc
             </p>
             <h1 className="mt-5 max-w-4xl text-4xl font-bold leading-[1.06] tracking-tight text-slate-950 sm:text-5xl lg:text-7xl">
               Sécurisez l’essentiel avec un système pensé pour votre site.
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-600">
-              IVI SYSTEM étudie, installe et maintient des solutions d’alarme
+              {SITE.name} étudie, installe et maintient des solutions d’alarme
               anti-intrusion et de vidéosurveillance pour les professionnels et
-              les particuliers à Casablanca.
+              les particuliers partout au Maroc.
+            </p>
+
+            <p className="mt-4 max-w-2xl text-sm font-medium text-slate-700">
+              Avec {SITE.contactPerson} comme interlocuteur direct, du premier
+              échange au suivi de votre installation.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -202,7 +253,7 @@ export default function HomePage() {
 
             <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-sm text-slate-600">
               {[
-                "Plus de 20 ans d’expérience",
+                "Plus de 30 ans d’expérience",
                 "Professionnels et particuliers",
                 "Étude adaptée au site",
               ].map((item) => (
@@ -262,16 +313,60 @@ export default function HomePage() {
       <section className="border-b border-slate-200 bg-blue-50/70" aria-label="Repères">
         <div className="mx-auto grid max-w-7xl divide-y divide-slate-200 px-4 sm:grid-cols-3 sm:divide-x sm:divide-y-0 sm:px-6 lg:px-8">
           <div className="py-7 sm:px-6 sm:first:pl-0">
-            <p className="text-2xl font-bold text-slate-950">20+ ans</p>
+            <p className="text-2xl font-bold text-slate-950">30+ ans</p>
             <p className="mt-1 text-sm text-slate-500">d’expérience métier</p>
           </div>
           <div className="py-7 sm:px-6">
-            <p className="text-2xl font-bold text-slate-950">Casablanca</p>
-            <p className="mt-1 text-sm text-slate-500">zone d’intervention principale</p>
+            <p className="text-2xl font-bold text-slate-950">Tout le Maroc</p>
+            <p className="mt-1 text-sm text-slate-500">zone d’intervention</p>
           </div>
           <div className="py-7 sm:px-6 sm:last:pr-0">
             <p className="text-2xl font-bold text-slate-950">Sur mesure</p>
             <p className="mt-1 text-sm text-slate-500">selon le risque et le bâtiment</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 pt-20 sm:px-6 sm:pt-24 lg:px-8 lg:pt-32">
+        <div className="grid overflow-hidden rounded-3xl border border-blue-200 bg-blue-950 lg:grid-cols-[0.72fr_1.28fr]">
+          <div className="relative flex min-h-72 items-center justify-center overflow-hidden bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.32),transparent_58%)] p-8">
+            <div className="flex h-40 w-40 items-center justify-center rounded-full border border-blue-400/40 bg-blue-900 text-center shadow-2xl shadow-blue-950/40">
+              <div>
+                <span className="block text-5xl font-bold text-white">SL</span>
+                <span className="mt-2 block text-xs font-semibold uppercase tracking-[0.2em] text-blue-200">
+                  Votre expert
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-7 sm:p-10 lg:p-14">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-300">
+              Une entreprise, un interlocuteur identifié
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              {SITE.contactPerson}, votre contact chez {SITE.name}
+            </h2>
+            <p className="mt-5 max-w-2xl leading-7 text-blue-100">
+              Pour une maison, un commerce ou une petite entreprise, vous
+              échangez directement avec un interlocuteur qui prend le temps de
+              comprendre le site, les habitudes et les priorités avant de
+              proposer une solution.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <a
+                href={CONTACT.phoneHref}
+                className="inline-flex items-center justify-center rounded-full bg-white px-6 py-3 font-semibold text-blue-950 transition hover:bg-blue-50"
+              >
+                Appeler {SITE.contactPerson}
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-full border border-blue-400/60 px-6 py-3 font-semibold text-white transition hover:bg-blue-900"
+              >
+                Présenter votre projet
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -343,7 +438,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {SERVICES.map((service) => (
               <article
                 key={service.title}
@@ -414,7 +509,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-32">
           <div className="max-w-3xl">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-blue-600">
-              Pourquoi IVI SYSTEM
+              Pourquoi {SITE.name}
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
               Une approche technique, lisible et durable
@@ -476,12 +571,11 @@ export default function HomePage() {
               Zone d’intervention
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-950 sm:text-4xl">
-              Une présence principale à Casablanca
+              Présent partout au Maroc
             </h2>
             <p className="mt-5 leading-7 text-slate-600">
-              Cette proximité facilite les visites techniques et le suivi. Une
-              demande située hors de Casablanca peut être évaluée selon sa
-              nature et ses conditions d’intervention.
+              Nous organisons des interventions dans toutes les régions du Maroc
+              selon la nature, le calendrier et les contraintes du site.
             </p>
             <Link
               href="/contact"

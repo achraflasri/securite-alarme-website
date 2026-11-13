@@ -2,6 +2,7 @@
 
 import type { FormEvent } from "react";
 import { CONTACT } from "@/config/contact";
+import { PERSON } from "@/config/site";
 
 const inputClasses =
   "mt-2 w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-950 shadow-sm outline-none transition placeholder:text-slate-400 hover:border-slate-400 focus:border-blue-600 focus:ring-4 focus:ring-blue-100";
@@ -19,6 +20,9 @@ const SERVICES = [
   "Alarme anti-intrusion",
   "Vidéosurveillance",
   "Contrôle d’accès",
+  "Système incendie adressable",
+  "Système incendie conventionnel",
+  "Réseau informatique / câblage",
   "Maintenance",
   "Diagnostic d’une installation",
   "Plusieurs services",
@@ -53,7 +57,7 @@ function buildQuoteMessage(formData: FormData) {
   return {
     subject: `Demande de devis — ${service} — ${name}`,
     body: [
-      "Bonjour IVI SYSTEM,",
+      `Bonjour ${PERSON.name},`,
       "",
       "Je souhaite demander un devis avec les informations suivantes :",
       "",
@@ -188,7 +192,7 @@ export function QuoteForm() {
             type="text"
             autoComplete="address-level2"
             required
-            defaultValue="Casablanca"
+            placeholder="Votre ville"
             className={inputClasses}
           />
         </label>
@@ -250,7 +254,7 @@ export function QuoteForm() {
           className="mt-1 h-4 w-4 shrink-0 rounded border-slate-300 text-blue-600 accent-blue-600"
         />
         <span>
-          J’autorise IVI SYSTEM à utiliser ces informations uniquement pour me
+          J’autorise {PERSON.name} à utiliser ces informations uniquement pour me
           recontacter au sujet de cette demande. <span className="text-blue-600">*</span>
         </span>
       </label>
